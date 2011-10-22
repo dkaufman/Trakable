@@ -1,0 +1,24 @@
+<%= form_for [@user, @habit, @metric] do |f| %>
+  <% if @metric.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@metric.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @metric.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+      <p><%= f.label :type %><%= f.select(:type, [['Short Description',1], ['Long Description',2],
+      ['Number', 3], ['Time of Day', 4]], :include_blank => true ) %></p>
+  </div>  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p class = "page_title">
+  <b>Habit:</b>
+  <%= @habit.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_habit_path(@user, @habit) %> |
+<%= link_to 'Back', user_path(@user) %>
+
+<p class="count">This habit currently has <%= pluralize(@habit.metrics.size, "metric") %>. ---->
+<%= link_to "Add a new metric", new_user_habit_metric_path(@user, @habit)%></p>
+<% count = 1 %>
+<% if @habit.metrics.size > 0 %>
+  <p class= "table_header">Metrics</p>
+  <% for metric in @habit.metrics %>
+    <p><%= count %>) <%= link_to metric.name, user_habit_metric_path(@user, @habit, metric)%></p>
+    <% count += 1 %>
+  <% end %>
+<% end %>

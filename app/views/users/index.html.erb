@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Real Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    
+  </tr>
+  <h3> <%= link_to 'New User', new_user_path %> </h3>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.username %></td>
+    <td><%= user.name %></td>
+    <td><%= link_to 'Select User', user %></td>
+    <td><%= link_to 'Change User Settings', edit_user_path(user) %></td>
+    <td><%= link_to 'Delete User Account', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

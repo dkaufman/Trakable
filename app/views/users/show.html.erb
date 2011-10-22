@@ -1,0 +1,17 @@
+<h2 id="notice"><%= notice %></h2>
+
+<p class = "page_title">
+Viewing <%= @user.name %>'s Profile (<%= link_to 'Edit', edit_user_path(@user) %>)
+</p>
+
+
+<p class="count"><%= @user.name %> is currently tracking <%= pluralize(@user.habits.size, "habit")%>.</p>
+<%= link_to "Add a new habit", new_user_habit_path(@user)%></p>
+<% if @user.habits.size > 0 %>
+  <% count = 1 %>
+  <p class= "table_header">Habits</p>
+  <% for habit in @user.habits %>
+  <p><%= count %>) <%= link_to habit.name, user_habit_path(@user, habit)%></p>
+  <% count += 1%>
+  <% end %>
+<% end %>
