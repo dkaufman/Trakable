@@ -7,9 +7,33 @@
   <%= @metric.type %>
 </p>
 
+Observations
 
+<% if @metric.observation_record %>
+<p class="count">This metric currently has <%= pluralize(@metric.observation_record.length, "observation") %>.
+  <% if @metric.observation_record.length > 0 %>
+    <p class= "table_header">Observations</p>
+    <table>
+      <tr><td>ID</td><td>Day</td><td>Time</td><td>Datapoint</td></tr>
+      <% @metric.observation_record.each_pair do |k,v| %>
+        <tr><td><%= k %></td><td><%= v["observation_day"] %></td><td><%= v["observation_time"] %></td><td><%= v["observation"] %></td></tr>  
+      <% end %>
+    </table>
+  <% end %>
+<% end %>
+<br><br><br>
+Add Data Point
+
+<% form_tag({:action => "add_datapoint"}, :method => "post") do %>
+  <%= label_tag(:observation_day, "Observation Date")%>
+  <%= text_field_tag(:observation_day)%><br>
+  <%= label_tag(:observation, "Observation")%>
+  <%= text_field_tag(:observation)%>
+  <%= hidden_field_tag(:user_id, params[:user_id]) %>
+  <%= hidden_field_tag(:habit_id, params[:habit_id]) %>
+  <%= hidden_field_tag(:id, params[:id]) %>
+  <%= submit_tag("Add Observation")%>
+<% end %>
 
 <%= link_to 'Edit', edit_user_habit_metric_path(@user, @habit, @metric) %> |
 <%= link_to 'Back', user_habit_path(@user, @habit) %>
-
-

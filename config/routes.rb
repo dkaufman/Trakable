@@ -1,12 +1,15 @@
 Trakable::Application.routes.draw do
   resources :users do
     resources :habits do
-      resources :metrics        
+      resources :metrics
     end
   end
   
 
   get "pages/home"
+  
+  match '/metrics/add_datapoint', :to => 'metrics#add_datapoint'
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

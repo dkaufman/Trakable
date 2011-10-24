@@ -9,6 +9,25 @@ class MetricsController < ApplicationController
       render "new"
     end
   end
+    
+  def add_datapoint
+    @user = User.find(params[:user_id])
+    @habit = @user.habits.find(params[:habit_id])
+    @metric = @habit.metrics.find(params[:id])
+    @hash = @metric.observation_record
+    if @hash
+      @hash[Time.now.ctime] = {:observation_day => params[:observation_day], :observation_time => params[:observation_time],
+                               :observation => params[:observation]}
+    else
+      @hash = {Time.now.ctime => {:observation_day => params[:observation_day], :observation_time => params[:observation_time],
+                                  :observation => params[:observation]}}
+    end
+    if @metric.update_attributes(:observation_record => @hash)
+      redirect_to [@user, @habit, @metric], :notice => "Observation created!"
+    else
+      render "show"
+    end
+  end
   
   def new
     @user = User.find(params[:user_id])

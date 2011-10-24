@@ -8,9 +8,9 @@
   <%= render 'layouts/stylesheets'%>
 </head>
 <body>
-<h1 class = "title"><%= link_to 'Trakable.com', root_path %></h1>
 <%= render 'layouts/header' %>
 <%= yield %>
+<%= render 'layouts/footer' %>
 <%= debug(params) if Rails.env.development? %>
 </body>
 </html>

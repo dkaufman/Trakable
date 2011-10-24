@@ -3,7 +3,7 @@ class HabitsController < ApplicationController
     @user = User.find(params[:user_id])
     @habit = @user.habits.new(params[:habit])
     if @habit.save
-      redirect_to @user, :notice => "Metric created!"
+      redirect_to @user, :notice => "Habit created!"
     else
       render "new"
     end

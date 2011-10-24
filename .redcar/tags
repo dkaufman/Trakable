@@ -1,4 +1,4 @@
-1319262107
+1319424993
 Application	/Users/Daniel/Documents/Sites/trakable/config/application.rb	  class Application 
 ApplicationController	/Users/Daniel/Documents/Sites/trakable/app/controllers/application_controller.rb	class ApplicationController 
 ApplicationHelper	/Users/Daniel/Documents/Sites/trakable/app/helpers/application_helper.rb	module ApplicationHelper
@@ -33,6 +33,7 @@ abs	/Users/Daniel/Documents/Sites/trakable/public/javascripts/prototype.js	funct
 absolutize	/Users/Daniel/Documents/Sites/trakable/public/javascripts/prototype.js	function absolutize(element)
 addMethods	/Users/Daniel/Documents/Sites/trakable/public/javascripts/prototype.js	function addMethods(source)
 addText	/Users/Daniel/Documents/Sites/trakable/public/javascripts/controls.js	function addText(mode, condition)
+add_datapoint	/Users/Daniel/Documents/Sites/trakable/app/controllers/metrics_controller.rb	  def add_datapoint
 all	/Users/Daniel/Documents/Sites/trakable/public/javascripts/prototype.js	function all(iterator, context)
 any	/Users/Daniel/Documents/Sites/trakable/public/javascripts/prototype.js	function any(iterator, context)
 argumentNames	/Users/Daniel/Documents/Sites/trakable/public/javascripts/prototype.js	function argumentNames()
